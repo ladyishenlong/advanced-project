@@ -1,3 +1,3 @@
 # 目前学习计划
-- mybits-plus
+- mybatis-plus
 - 文件上传下载
