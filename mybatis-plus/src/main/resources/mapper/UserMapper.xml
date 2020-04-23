@@ -3,11 +3,12 @@
 <mapper namespace="com.ladyishenlong.mybatisplus.mapper.UserMapper">
 
 
-
-
     <select id="getUserById" resultType="com.ladyishenlong.mybatisplus.model.UserEntity">
         select i.name from user i where i.id = #{id}
     </select>
 
+    <select id="getUserPage" resultType="com.ladyishenlong.mybatisplus.model.UserEntity">
+                select i.name from user i
+    </select>
 
 </mapper>

@@ -17,19 +17,20 @@ import java.util.Date;
 @TableName("user")
 public class UserEntity implements Serializable {
 
-
     @TableId
+    private String username;
+
     private String id;
 
     private String name;
 
     private String phone;
 
+
     @TableField(fill = FieldFill.INSERT) // 创建记录的时候需要填充
     private Date createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE) // 创建和修改的时候都需要填充
     private Date updateTime;
-
 
 }
