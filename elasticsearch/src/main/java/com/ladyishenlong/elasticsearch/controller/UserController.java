@@ -33,4 +33,14 @@ public class UserController {
         return testServer.findAll();
     }
 
+    @GetMapping("/search")
+    public Object search() {
+        return testServer.search();
+    }
+
+    @GetMapping("/query")
+    public Object query() {
+        return testServer.query();
+    }
+
 }
