@@ -1,0 +1,15 @@
+2020-04-26 15:06:58.004  INFO 9995 --- [main] com.ladyishenlong.aop.AopApplication     : Starting AopApplication on ruanchenhaodeMacBook-Pro.local with PID 9995 (/Users/ruanchenhao/WorkSpace/测试项目/advanced-project/aop/build/classes/java/main started by ruanchenhao in /Users/ruanchenhao/WorkSpace/测试项目/advanced-project)
+2020-04-26 15:06:58.007  INFO 9995 --- [main] com.ladyishenlong.aop.AopApplication     : No active profile set, falling back to default profiles: default
+2020-04-26 15:06:58.988  INFO 9995 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10000 (http)
+2020-04-26 15:06:58.996  INFO 9995 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-26 15:06:58.996  INFO 9995 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-26 15:06:59.070  INFO 9995 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-26 15:06:59.070  INFO 9995 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1019 ms
+2020-04-26 15:06:59.279  INFO 9995 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-26 15:06:59.451  INFO 9995 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10000 (http) with context path ''
+2020-04-26 15:06:59.454  INFO 9995 --- [main] com.ladyishenlong.aop.AopApplication     : Started AopApplication in 1.843 seconds (JVM running for 2.481)
+2020-04-26 15:08:05.749  INFO 9995 --- [http-nio-10000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-26 15:08:05.750  INFO 9995 --- [http-nio-10000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-26 15:08:05.760  INFO 9995 --- [http-nio-10000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-04-26 15:08:05.814  INFO 9995 --- [http-nio-10000-exec-2] com.ladyishenlong.aop.aspect.LogAspect   : 查看日志信息：测试接口
+2020-04-26 15:08:20.478  INFO 9995 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

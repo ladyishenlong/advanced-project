@@ -1,0 +1,6 @@
+server:
+  port: 10000
+logging:
+  file:
+    name: /Users/ruanchenhao/WorkSpace/测试项目/logs/aoplog.log
+
