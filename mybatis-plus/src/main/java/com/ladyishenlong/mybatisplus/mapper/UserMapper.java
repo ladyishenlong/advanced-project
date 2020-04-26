@@ -16,6 +16,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper extends BaseMapper<UserEntity> {
 
+    UserEntity getUserByUsername(@Param("username") String username);
 
     UserEntity getUserById(@Param("id") String id);
 

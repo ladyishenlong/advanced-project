@@ -9,9 +9,13 @@ import com.ladyishenlong.mybatisplus.server.UserServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.jws.Oneway;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author ruanchenhao
@@ -19,7 +23,7 @@ import java.util.Date;
  */
 @Slf4j
 @RestController
-public class TestController {
+public class UserController {
 
     @Autowired
     private UserServer userServer;
@@ -64,9 +68,20 @@ public class TestController {
         userEntity.setPhone("2500");
         userEntity.setUsername("2500");
         userServer.saveUser(userEntity);
+        return "";
+    }
 
 
+    @PostMapping("/saves")
+    public Object saves(@RequestBody List<UserEntity> userEntities) {
+        userServer.saveUsers(userEntities);
+        return "";
+    }
 
+
+    @GetMapping("/lockTest")
+    public Object lockTest() {
+        userServer.lockTest();
         return "";
     }
 

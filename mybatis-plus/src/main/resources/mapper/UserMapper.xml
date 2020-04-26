@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ladyishenlong.mybatisplus.mapper.UserMapper">
 
-
+    <select id="getUserByUsername" resultType="com.ladyishenlong.mybatisplus.model.UserEntity">
+        select i.* from user i where i.username = #{username}
+    </select>
     <select id="getUserById" resultType="com.ladyishenlong.mybatisplus.model.UserEntity">
         select i.name from user i where i.id = #{id}
     </select>

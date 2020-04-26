@@ -1,9 +1,6 @@
 package com.ladyishenlong.mybatisplus.model;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -25,6 +22,10 @@ public class UserEntity implements Serializable {
     private String name;
 
     private String phone;
+
+
+    @Version
+    private Integer version; //原本字段为null的时候不会加
 
 
     @TableField(fill = FieldFill.INSERT) // 创建记录的时候需要填充
