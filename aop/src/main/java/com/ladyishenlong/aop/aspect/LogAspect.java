@@ -15,6 +15,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -36,22 +39,36 @@ public class LogAspect {
     @Around("pointCut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 
+        //获得执行的结果,controller里的异常在这步抛出
+        Object result = joinPoint.proceed();
+        log.info("接口返回值：{}", result);
 
-        Object object = joinPoint.proceed();
 
         HttpServletRequest request = ((ServletRequestAttributes)
-                RequestContextHolder.getRequestAttributes())
-                .getRequest();
+                RequestContextHolder.getRequestAttributes()).getRequest();
 
-        Method method = getMethod(joinPoint);
-
-        LogRecord logRecord = method.getAnnotation(LogRecord.class);
+        String requestUri = request.getRequestURI();
+        log.info("查看访问地址:{}", requestUri);
 
 
+        //获取参数
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        HashMap<String, Object> paramMap = new HashMap<>();
+        for (int i = 0; i < joinPoint.getArgs().length; i++) {
+            String paramName = methodSignature.getParameterNames()[i];
+            Object paramValue = joinPoint.getArgs()[i];
+            paramMap.put(paramName, paramValue);
+        }
+        log.info("查看参数：{}", paramMap.toString());
+
+
+
+        //获取注解内信息
+        LogRecord logRecord = methodSignature.getMethod().getAnnotation(LogRecord.class);
         log.info("查看日志信息：{}", logRecord.value());
 
 
-        return null;
+        return result;
     }
 
 
@@ -67,8 +84,9 @@ public class LogAspect {
     @AfterReturning(pointcut = "pointCut()", returning = "rvt")
     public void doAfterReturning(JoinPoint joinPoint, Object rvt) {
         // 处理日志信息
-        log.info("完成后日志：{}", rvt);
+        log.info("正常完成接口后日志：{}", rvt);
     }
+
 
 
 }
