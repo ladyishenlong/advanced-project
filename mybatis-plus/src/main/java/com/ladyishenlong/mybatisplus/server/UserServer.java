@@ -28,7 +28,7 @@ public interface UserServer extends IService<UserEntity> {
     void saveUsers(List<UserEntity> userEntities);
 
     /**
-     * 乐观锁测试
+     * 乐观锁测试,version自动加一
      */
     void lockTest();
 
