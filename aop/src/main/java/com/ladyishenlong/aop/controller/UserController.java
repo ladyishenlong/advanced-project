@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 
-//    @LogRecord("测试接口")
+    @LogRecord("测试接口")
     @GetMapping("/{id}")
-    public Object getUser(@PathVariable int id){
-        if(true)throw new RuntimeException("抛出异常");
-
-        return "hello "+id;
+    public Object getUser(@PathVariable int id) {
+        if (true) throw new RuntimeException("抛出异常");
+        return "hello " + id;
     }
 
 }

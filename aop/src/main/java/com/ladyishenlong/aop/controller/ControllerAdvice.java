@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @Date 2020/4/26 2:00 下午
  * <p>
  * ControllerAdvice是对controller抛出的异常做处理，
- * aop如果处理了异常，则此处就无法补货到
+ * aop切面如果处理了异常，则此处就无法捕获到
  */
 @Slf4j
 @RestControllerAdvice

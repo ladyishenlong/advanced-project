@@ -34,25 +34,22 @@ public class LogAspect {
 
 
     @Around("pointCut()")
-    public Object around(ProceedingJoinPoint joinPoint) {
-
-        try {
-            Object object = joinPoint.proceed();
-
-            HttpServletRequest request = ((ServletRequestAttributes)
-                    RequestContextHolder.getRequestAttributes())
-                    .getRequest();
-
-            Method method = getMethod(joinPoint);
-
-            LogRecord logRecord = method.getAnnotation(LogRecord.class);
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 
 
-            log.info("查看日志信息：{}", logRecord.value());
+        Object object = joinPoint.proceed();
 
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+        HttpServletRequest request = ((ServletRequestAttributes)
+                RequestContextHolder.getRequestAttributes())
+                .getRequest();
+
+        Method method = getMethod(joinPoint);
+
+        LogRecord logRecord = method.getAnnotation(LogRecord.class);
+
+
+        log.info("查看日志信息：{}", logRecord.value());
+
 
         return null;
     }
@@ -70,12 +67,8 @@ public class LogAspect {
     @AfterReturning(pointcut = "pointCut()", returning = "rvt")
     public void doAfterReturning(JoinPoint joinPoint, Object rvt) {
         // 处理日志信息
-        log.info("完成后日志：{}",rvt);
+        log.info("完成后日志：{}", rvt);
     }
-
-
-
-
 
 
 }
