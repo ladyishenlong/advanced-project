@@ -15,6 +15,9 @@ public class TestEventServer {
     private ApplicationContext context;
 
 
+    /**
+     * 发布订阅信息，所有TestEvent监听者都会收到信息
+     */
     public void test() {
         context.publishEvent(new TestEvent("测试数据"));
     }
