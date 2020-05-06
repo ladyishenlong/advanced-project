@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @SpringBootApplication
+@MapperScan(basePackages="com.ladyishenlong.mybatisplus.mapper")
 public class MybatisPlusApplication {
 
     public static void main(String[] args) {
