@@ -1,0 +1,30 @@
+#用来配置 CI 用你的项目中做哪些操作，这个文件位于仓库的根目
+#当有新内容push到仓库，或者有代码合并后，GitLab会查找是否有.gitlab-ci.yml文件，
+#如果文件存在，Runners将会根据该文件的内容开始build本次commit
+
+#构建阶段，任务将按照此顺序运行，前一个成功才会执行后一个
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  GIT_STRATEGY: fetch
+
+springboot-build:
+  stage: build
+  tags:
+    - advanced #只有标签为advanced的runner才会执行这个任务
+  only:
+    - dev #只有dev分支会执行
+    - /^dev-.*$/ #正则表达式，只有dev-开头的分支才会执行
+  script:
+    - echo "开始构建"
+    - mvn clean install -Dmaven.test.skip=true
+    - echo "构建成功"
+
+deploy:
+  stage: deploy
+  tags:
+    - advanced
+  script:
