@@ -8,6 +8,7 @@ import com.ladyishenlong.mybatisplus.model.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 import java.util.TreeMap;
@@ -39,7 +40,7 @@ public class UserServerImpl extends ServiceImpl<UserMapper, UserEntity> implemen
     }
 
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveUsers(List<UserEntity> userEntities){
         saveOrUpdateBatch(userEntities);
