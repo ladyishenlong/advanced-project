@@ -41,9 +41,12 @@ public class WebFluxSecurityConfig {
                 .csrf().disable()
                 //跨域请求
                 .cors().disable()
+
                 .authorizeExchange()
+
                 .pathMatchers("/test/**")
                 .access((mono, context) -> authAccess.hasRoles(context,"ADMIN"))
+
                 .anyExchange().authenticated()
                 .and()
                 .build();
