@@ -25,8 +25,7 @@ import javax.annotation.Resources;
 @Component
 public class SecurityContextRepository implements ServerSecurityContextRepository {
 
-    @Resource
-    public AuthenticationManager authenticationManager;
+
 
     @Override
     public Mono<Void> save(ServerWebExchange exchange, SecurityContext context) {

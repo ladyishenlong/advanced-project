@@ -36,7 +36,6 @@ public class WebFluxSecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 
         return http
-
                 .securityContextRepository(securityContextRepository)
                 //跨站请求
                 .csrf().disable()
@@ -44,29 +43,7 @@ public class WebFluxSecurityConfig {
                 .cors().disable()
                 .authorizeExchange()
                 .pathMatchers("/test/**")
-//                .access(new ReactiveAuthorizationManager<AuthorizationContext>() {
-//                    @Override
-//                    public Mono<AuthorizationDecision> check(Mono<Authentication> authentication,
-//                                                             AuthorizationContext context) {
-//
-//                        authAccess.getToken(context);
-////                        object.getExchange().getRequest().getHeaders().getFirst()
-//
-//
-//                        return null;
-//                    }
-//                })
-                .access((mono, context) -> {
-
-                    authAccess.getToken(context);
-
-
-
-                            return Mono.just(new AuthorizationDecision(true));
-                        }
-                )
-
-
+                .access((mono, context) -> authAccess.hasRoles(context,"ADMIN"))
                 .anyExchange().authenticated()
                 .and()
                 .build();
